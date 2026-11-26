@@ -29,6 +29,10 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
+    'vendor/etc/audio/sku_lahaina/mixer_paths_overlay_static.xml': blob_fixup()
+        .regex_replace(r'(<path name="ultrasound-suspend">\n)\s*<ctl name="Ultrasound Suspend" value="1"\s*/>\n', r'\1')
+        .regex_replace(r'(<path name="speaker">[\s\S]*?<ctl name="Cirrus SP Usecase Config" value="None" />\n)(\s*</path>)', r'\1       <ctl name="Ultrasound Suspend" value="1" />\n\2')
+        .regex_replace(r'(<path name="speaker-mono-2">[\s\S]*?<ctl name="RCV ASPTX Ref" value="Ref" />\n)(\s*</path>)', r'\1       <ctl name="Ultrasound Suspend" value="1" />\n\2'),
     'vendor/etc/camera/pureShot_parameter.xml': blob_fixup()
         .regex_replace(r'=(\d+)>', r'="\1">'),
     'vendor/etc/sensors/hals.conf': blob_fixup()
