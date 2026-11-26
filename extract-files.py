@@ -28,6 +28,10 @@ lib_fixups: lib_fixups_user_type = {
     **lib_fixups,
 }
 
+# NOTE: vendor/etc/thermal-normal.conf and vendor/etc/thermal-per-normal.conf
+# are intentionally customized in proprietary_vendor_xiaomi_venus (AES-128-CBC
+# encrypted, so they cannot be patched with a blob_fixup). Do not blindly
+# overwrite them when re-extracting from a stock image.
 blob_fixups: blob_fixups_user_type = {
     'vendor/etc/audio/sku_lahaina/mixer_paths_overlay_static.xml': blob_fixup()
         .regex_replace(r'(<path name="ultrasound-suspend">\n)\s*<ctl name="Ultrasound Suspend" value="1"\s*/>\n', r'\1')
