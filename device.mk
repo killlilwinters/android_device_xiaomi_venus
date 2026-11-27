@@ -9,6 +9,10 @@ TARGET_HAS_POWERSHARE := true
 # Inherit from sm8350-common
 $(call inherit-product, device/xiaomi/sm8350-common/common.mk)
 
+# Display config
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/displayconfig/display_id_4630946736638489730.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_4630946736638489730.xml
+
 # Overlays
 PRODUCT_PACKAGES += \
     ApertureOverlayVenus
