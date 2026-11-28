@@ -4,6 +4,39 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <displayConfiguration>
+    <!--
+         HDR brightness boost, using the values from Xiaomi's stock HyperOS
+         config for this panel (product/etc/displayconfig, V816.0.10.0.UKBMIXM):
+         2.25x HDR/SDR ratio at every SDR brightness, any HDR layer size, also in
+         battery saver. The SDR brightness scale (config_screenBrightnessNits) is
+         left untouched because the kernel backlight currently stops at 2047.
+    -->
+    <hdrBrightnessConfig>
+        <!-- No ambient-light cap on the boost -->
+        <brightnessMap>
+            <point>
+                <first>100000</first>
+                <second>1.0</second>
+            </point>
+        </brightnessMap>
+        <brightnessIncreaseDebounceMillis>0</brightnessIncreaseDebounceMillis>
+        <brightnessDecreaseDebounceMillis>0</brightnessDecreaseDebounceMillis>
+        <screenBrightnessRampIncrease>0.04</screenBrightnessRampIncrease>
+        <screenBrightnessRampDecrease>0.03</screenBrightnessRampDecrease>
+        <minimumHdrPercentOfScreenForNbm>0</minimumHdrPercentOfScreenForNbm>
+        <minimumHdrPercentOfScreenForHbm>0</minimumHdrPercentOfScreenForHbm>
+        <allowInLowPowerMode>true</allowInLowPowerMode>
+        <sdrHdrRatioMap>
+            <point>
+                <first>2.0</first>
+                <second>2.25</second>
+            </point>
+            <point>
+                <first>1000.0</first>
+                <second>2.25</second>
+            </point>
+        </sdrHdrRatioMap>
+    </hdrBrightnessConfig>
     <autoBrightness enabled="true">
         <brighteningLightDebounceMillis>1000</brighteningLightDebounceMillis>
         <darkeningLightDebounceMillis>2000</darkeningLightDebounceMillis>
